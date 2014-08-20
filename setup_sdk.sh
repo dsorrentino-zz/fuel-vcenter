@@ -48,9 +48,16 @@ function install_perl_modules
 function extract_SDK
 {
   local RETURN_CODE=0
-  echo "Extracting ${INSTALL_SDK_TGZ}"
-  tar -zxvf vSphere_SDK/${INSTALL_SDK_TGZ} >/dev/null 2>&1
-  RETURN_CODE=$?
+
+  if [[ ! -r vSphere_SDK/${INSTALL_SDK_TGZ} ]]
+  then
+    echo "Error: File not found: vSphere_SDK/${INSTALL_SDK_TGZ}"
+    RETURN_CODE=2
+  else
+    echo "Extracting ${INSTALL_SDK_TGZ}"
+    tar -zxvf vSphere_SDK/${INSTALL_SDK_TGZ} >/dev/null 2>&1
+    RETURN_CODE=$?
+  fi
 
   if [[ ${RETURN_CODE} -ne 0 ]]
   then
