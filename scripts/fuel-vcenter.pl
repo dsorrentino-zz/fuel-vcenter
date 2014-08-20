@@ -1062,6 +1062,12 @@ sub upload_mos_iso
   my $service_url = URI::URL->new($service->{vim_soap}->{url});
   my $user_agent = $service->{vim_soap}->{user_agent};
 
+  if ( ! -e "../ISO/" . $DeployConfig{'INSTALL_FUEL_ISO'} )
+  {
+    print "Error:  File missing: ../ISO/" . $DeployConfig{'INSTALL_FUEL_ISO'} . "\n";
+    exit 1;
+  }
+
   $service_url =~ s/\/sdk\/webService//g;
   my $url_string = $service_url . "/folder/MIRANTIS/" . $DeployConfig{'INSTALL_FUEL_ISO'} . "?dcPath=" . $DeployConfig{'VCENTER_DC'} . "&dsName=" . $DeployConfig{'VCENTER_DATASTORE'};
   utf8::downgrade($url_string);
