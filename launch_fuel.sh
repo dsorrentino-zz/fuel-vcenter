@@ -14,7 +14,7 @@ DEPLOYMENT_SCRIPT=fuel-vcenter.pl
 ##########################################
 
 cd scripts
-#./${DEPLOYMENT_SCRIPT} --fuel_action create_config
+./${DEPLOYMENT_SCRIPT} --fuel_action create_config
 RC=$?
 cd ${START_DIRECTORY}
 
@@ -36,7 +36,7 @@ then
   echo "This may take a couple minutes..."
 
   cd scripts
-#  ./${DEPLOYMENT_SCRIPT} --fuel_action upload_iso
+  ./${DEPLOYMENT_SCRIPT} --fuel_action upload_iso
   RC=$?
   cd ${START_DIRECTORY}
 
